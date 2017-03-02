@@ -1,3 +1,20 @@
 <h1>
   {{title}}
 </h1>
+<app-sample [proBinding] (evClick)="touchInput($event)"><h1>test-sample</h1></app-sample>
+<app-life *ngIf="!delete" [bindable]="boundValue">
+  <p #boundContent>{{test}}</p>
+</app-life>
+<button (click)="delete = true">Click destroy</button>
+<button (click)="test = 'Welcome Change'">Click Change content</button>
+<button (click)="delete = false">Click enable</button>
+<button (click)="boundValue = 1121">Click Chnage Property</button>
+<button (click)="boundValue = 1122">Click Chnage Property</button>
+<div customDirective>Welcom Directive</div>
+<!--<button (click)="delete = false">Click enable</button>-->
+<br>
+<br>
+<br>
+<br>
+<br>
+
