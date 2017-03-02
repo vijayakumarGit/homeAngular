@@ -1,0 +1,15 @@
+<p>Sample works!</p>
+
+<div [ngClass]="{txtBorder:onLoadFun()}">Welcome Liad</div>
+<div [ngClass]="{txtBorder:true,colorChnage:true}">Welcome Liad</div>
+<div [ngStyle]="{'background-color':'red'}">Hi </div>
+{{proBinding}}
+<ng-content></ng-content>
+<input type="button" (click)="onClicked($event.target.value)" value="Submit">
+<select (change)="changeValue()">
+  <option *ngFor="let v of empolyelist">{{v.name}}</option>
+</select>
+
+<app-test [sample11]></app-test>
+
+
