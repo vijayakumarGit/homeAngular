@@ -14,6 +14,12 @@
 <!--<button (click)="delete = false">Click enable</button>-->
 <br>
 <div  *customDirective="delete"></div>
+
+<div [ngSwitch]="value">
+  <p *ngSwitchWhen="100">Vijay</p>
+  <p *ngSwitchDefault>Vijay</p>
+
+</div>
 <br>
 <br>
 <br>
