@@ -10,9 +10,10 @@
 <button (click)="delete = false">Click enable</button>
 <button (click)="boundValue = 1121">Click Chnage Property</button>
 <button (click)="boundValue = 1122">Click Chnage Property</button>
-<div customDirective>Welcom Directive</div>
+<div customDirective [backgroundColor]="'blue'" [defultColor]="'yellow'"> Welcom Directive</div>
 <!--<button (click)="delete = false">Click enable</button>-->
 <br>
+<div  *customDirective="delete"></div>
 <br>
 <br>
 <br>
