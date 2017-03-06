@@ -13,15 +13,22 @@
 <div customDirective [backgroundColor]="'blue'" [defultColor]="'yellow'"> Welcom Directive</div>
 <!--<button (click)="delete = false">Click enable</button>-->
 <br>
-<div  *customDirective="delete"></div>
+<template [ngIf]="delete">
+  <div>Sturctral directive</div>
+</template>
+<div *structDirective="delete">local Struct</div>
 
 <div [ngSwitch]="value">
-  <p *ngSwitchWhen="100">Vijay</p>
+  <p *ngSwitchCase="100">Vijay100</p>
   <p *ngSwitchDefault>Vijay</p>
-
 </div>
-<br>
-<br>
-<br>
-<br>
+<ul>
+  <li *ngFor="let item of items1">{{item}}</li>
+</ul>
+{{value1}}
+<input type="text" #newServ>
+<button (click)="onLog(newServ.value)">Click Here To Log</button>
+<button (click)="onStore(newServ.value)">Add Data</button>
+<button (click)="onShowdata()" >onGetvalue</button>
+
 

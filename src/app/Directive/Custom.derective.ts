@@ -3,7 +3,7 @@
  * Created by Vk on 02/3/2017.
  */
 
-import {Directive,ElementRef,Renderer,HostListener,Input,HostBinding,TemplateRef,ViewContainerRef} from '@angular/core';
+import {Directive,ElementRef,Renderer,HostListener,Input,HostBinding} from '@angular/core';
 @Directive({
   selector:'[customDirective]'
 })
@@ -11,12 +11,12 @@ import {Directive,ElementRef,Renderer,HostListener,Input,HostBinding,TemplateRef
 export class CustomDirective{
   @Input() backgroundColor:string='green';
   @Input() defultColor:string;
-  @Input('customDirective') set customDirec(condition:boolean){
-    if(!condition)
-      this.vcRef.createEmbeddedView(this.temRef)
-    else
-      this.vcRef.clear();
-  }
+  // @Input() set customDirective(condition:boolean){
+  //   if(!condition)
+  //     this.vcRef.createEmbeddedView(this.temRef)
+  //   else
+  //     this.vcRef.clear();
+  // }
 
   @HostListener('mouseenter') mouseover(){
    this.bcColor(this.backgroundColor)
@@ -30,7 +30,7 @@ export class CustomDirective{
   @HostBinding('style.backgroundColor') get setColor(){
     return this.backgroundColor
   }
-constructor(private elmR:ElementRef,private erC:Renderer,private temRef:TemplateRef<any>,private vcRef:ViewContainerRef){
+constructor(private elmR:ElementRef,private erC:Renderer){
   // console.log(this.elmR.nativeElement)
   // this.elmR.nativeElement.style.backgroundColor=this.backgroundColor
   // this.erC.setElementStyle(this.elmR.nativeElement,'background-color','red')

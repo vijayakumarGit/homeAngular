@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import {SampleCOmponet} from './sampleComponent/SampleComponet';
 import {SampleTwoComponent} from './sampleComponent/SampleTwoComponent';
 import {LifeCycleHook} from './sampleComponent/lfecycleHook';
-import {CustomDirective} from './Directive/Custom.derective'
+import {CustomDirective} from './Directive/Custom.derective';
+import {StructralDirective} from './Directive/strucralDirective';
+import {loging} from './Service/login.service'
 
 @NgModule({
   declarations: [
@@ -15,14 +17,15 @@ import {CustomDirective} from './Directive/Custom.derective'
     SampleCOmponet,
     SampleTwoComponent,
     LifeCycleHook,
-    CustomDirective
+    CustomDirective,
+    StructralDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [loging],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
