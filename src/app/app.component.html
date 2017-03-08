@@ -1,6 +1,7 @@
 <h1>
   {{title}}
 </h1>
+<!--<div>-->
 <app-sample [proBinding] (evClick)="touchInput($event)"><h1>test-sample</h1></app-sample>
 <app-life *ngIf="!delete" [bindable]="boundValue">
   <p #boundContent>{{test}}</p>
@@ -30,5 +31,13 @@
 <button (click)="onLog(newServ.value)">Click Here To Log</button>
 <button (click)="onStore(newServ.value)">Add Data</button>
 <button (click)="onShowdata()" >onGetvalue</button>
-
+  <!--</div>-->
+<label>UserName</label>
+<input type="text"  #username >
+<br>
+<label>Password</label>
+<input type="password" #password >
+<br>
+<button (click)="onSubMit(username.value,password.value)">Submit</button>
+<button (click)="onGet()">Get</button>
 

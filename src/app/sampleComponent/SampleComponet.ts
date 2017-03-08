@@ -28,8 +28,6 @@ export class SampleCOmponet implements OnInit {
   }
   onClicked(){
     this.eventName.emit('Welcome once again');
-
-
   }
   changeValue(value:string){
     console.log(value)
