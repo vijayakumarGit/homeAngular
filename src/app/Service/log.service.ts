@@ -25,7 +25,7 @@ export class LogService
   }
   pushData(val1:string)
   {
+      this.pushedData.emit(val1);
     console.log(val1);
-    this.pushedData.emit(val1)
   }
 }

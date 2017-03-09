@@ -1,8 +1,8 @@
 <h1>
   {{title}}
 </h1>
-<!--<div>-->
-<app-sample [proBinding] (evClick)="touchInput($event)"><h1>test-sample</h1></app-sample>
+<div hidden>
+
 <app-life *ngIf="!delete" [bindable]="boundValue">
   <p #boundContent>{{test}}</p>
 </app-life>
@@ -31,13 +31,28 @@
 <button (click)="onLog(newServ.value)">Click Here To Log</button>
 <button (click)="onStore(newServ.value)">Add Data</button>
 <button (click)="onShowdata()" >onGetvalue</button>
-  <!--</div>-->
+  </div>
+<app-sample [proBinding] (evClick)="touchInput($event)"><h1>test-sample</h1></app-sample>
 <label>UserName</label>
 <input type="text"  #username >
 <br>
 <label>Password</label>
 <input type="password" #password >
 <br>
+
 <button (click)="onSubMit(username.value,password.value)">Submit</button>
 <button (click)="onGet()">Get</button>
+<button (click)="onGetInventory()">Get Inventory Location</button>
+<button (click)="onDelete()">Delete Quotation</button>
+<br>
+<nav>
+  <a [routerLink]="['']">User Add</a>
+  <a [routerLink]="['/user/list']">User List</a>
+  <a [routerLink]="['/user/detail']">User Detail</a>
+
+</nav>
+
+<img src="../app/images/cat1.jpg" width="100" height="100">
+  <router-outlet></router-outlet>
+
 

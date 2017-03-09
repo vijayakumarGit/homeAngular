@@ -3,6 +3,7 @@
  */
 import {Component,OnInit,Input,Output,EventEmitter} from '@angular/core';
 import {LogService} from '../Service/log.service'
+import {Router, ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -16,10 +17,17 @@ import {LogService} from '../Service/log.service'
 
 export class SampleCOmponet implements OnInit {
   @Input() proBinding:string="Welcome Genius";
+  vals:string;
   @Output('evClick') eventName=new EventEmitter<string>();
   empolyelist:any []=[{'name':'vijay'},{'name':'kiri'},{name:'geeth'},{name:'pappa'}];
 
-  constructor(private lgserv:LogService){}
+  constructor(private lgserv:LogService,private router:Router,private actRout:ActivatedRoute){
+    actRout.params.subscribe(
+      (params:any)=> this.vals =params['id']
+    );
+
+
+  }
   ngOnInit(){
     console.log("sampleWorks")
   }
@@ -35,6 +43,13 @@ export class SampleCOmponet implements OnInit {
   changeFun()
   {
     this.lgserv.pushData('Welcome once again')
+  }
+
+  onNavicate(val:string){
+      this.router.navigate(['user/list'],{queryParams:{'container':'10'}})
+    // let value=document.getElementById('sampleCom1').value;
+    // console.log(value)
+    // this.router.navigate(['user/detail/'+val])
   }
 }
 

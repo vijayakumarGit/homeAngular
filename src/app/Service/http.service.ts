@@ -13,16 +13,15 @@ export class HttpService {
     let options=new RequestOptions({headers:headers})
     let url='http://apiv2.liad.com.au/account/login';
     const obj=JSON.stringify({'username':name,'password':pwd,'mode':'WEB'});
-    console.log(obj)
+    // console.log(obj)
   return this.http.post(url,obj,options)
     .map((data:Response)=>data.json())
-    .catch(this.errorHand)
   }
   postMethod(){
   let data=this.commonService('inventory/loc/list');
   return this.http.post(data.url,'{}',{headers:data.hearders})
     .map((data:Response)=>data.json())
-    .catch(this.errorHand)
+
   }
 
   private commonService(url:string):any{
@@ -35,19 +34,20 @@ export class HttpService {
         }
   }
   getMethod(){
-    let data=this.commonService('job');
-    let params:URLSearchParams=new URLSearchParams();
-                params.set('jobid','JOBPBMhxRiXI');
-
+    let data=this.commonService('contact');
+    let params=new URLSearchParams();
+                params.set('type','ALL');
     let options = new RequestOptions({ headers: data.hearders, search: params });
     return this.http.get(data.url,options)
       .map((data:Response)=>data.json())
-      .catch(this.errorHand)
   }
 
-private errorHand(error:any){
-  console.log(error)
-  return Observable.throw(error.json())
+  deleteMethod(){
+    let data = this.commonService('contact/CLdAUqPGef');
+    let options = new RequestOptions({headers:data.hearders});
+    return this.http.delete(data.url, options)
+      .map((data:Response)=>data.json())
+
   }
 
 }

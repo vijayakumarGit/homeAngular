@@ -12,5 +12,10 @@
 <button (click)="changeFun()">ChengeValue</button>
 
 <app-test [sample11]></app-test>
-
-
+<input type="text" id="sampleCom1" #id (input)="10">
+<nav>
+  <a [routerLink]="['/user/detail/'+id.value]">UserDeatil</a>
+</nav>
+<button (click)="onNavicate(id.value)">On Navigate</button>
+<br>
+{{vals}}

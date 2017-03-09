@@ -1,8 +1,7 @@
 import { Component,OnInit } from '@angular/core';
-import {LogService} from './Service/log.service'
-import {Response} from '@angular/http';
+import {LogService} from './Service/log.service';
 import {HttpService} from './Service/http.service'
-import {error} from "util";
+
 
 
 
@@ -61,7 +60,15 @@ export class AppComponent implements OnInit {
     // this.Http.post()
   }
 
-
+  onGetInventory(){
+    this.httpServ.postMethod()
+      .subscribe(
+        data=>{
+          console.log(data)
+        },
+        error=>console.log(error)
+      )
+  }
   onGet(){
       this.httpServ.getMethod()
         .subscribe(
@@ -71,7 +78,15 @@ export class AppComponent implements OnInit {
           error=>console.log(error)
         );
   }
-
+  onDelete(){
+    this.httpServ.deleteMethod()
+      .subscribe(
+        data=>{
+          console.log(data)
+        },
+        error=>console.log(error)
+      )
+  }
   // private responseData(resp)
   // {
   //   console.log(resp.json())
