@@ -1,0 +1,57 @@
+<div class="cont-header b-500 f-13">
+  Other Details
+</div>
+<div class="other-table mt-20" flex>
+  <div class="mr-25">
+    <div class="other-header f-13 b-400 op-6" uppercase>
+      Above Particulars as Declared By Shipper
+    </div>
+    <div class="other-table mt-20 wd-310">
+      <table class="good-table">
+        <thead>
+        <tr>
+          <td class="p-15 op-8" *ngFor="let lab of payment">
+            {{lab}}
+          </td>
+        </tr>
+        </thead>
+        <tbody class="hr-line">
+        <tr class="ht-65" *ngFor="let ot of getothers(others)">
+          <td class="p-15 f-13 b-400 op-6 text-left">
+            {{ot?.name}}
+          </td>
+          <td class="p-15 f-13 b-400 op-6 text-left">
+            {{ot?.prepaid}}
+          </td>
+          <td class="p-15 f-13 b-400 op-6 text-left">
+            {{ot?.collect}}
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td class="p-15 f-13 b-400 op-6">
+            GRAND TOTAL
+          </td>
+          <td colspan="2" class="p-15 f-13 text-right">{{others?.grandtotal}}</td>
+        </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+  <div>
+    <div class="other-header f-13 b-400 op-6" uppercase>
+      Destination charges on A/C of the CNEE.
+    </div>
+    <div class="mt-20 f-13 b-400 op-6">
+      {{static1}}
+      <div class="mt-30">
+        {{static2}}
+      </div>
+      <div class="mt-30">
+        {{static3}}
+      </div>
+    </div>
+  </div>
+</div>
