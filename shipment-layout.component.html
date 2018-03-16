@@ -1,0 +1,40 @@
+<div  class="mt-100" *ngIf="load">
+  <app-body-loader ></app-body-loader>
+</div>
+<div *ngIf="!load && !servererror">
+  <div style="z-index: 1024" *ngIf="!norecordmsg">
+  <app-filter-header
+    [filter]="fsfilter"
+    [column]="fscolumns"
+    [dropdown]="fsdropdown"
+    [subfilter]="fssubfilter"
+    [selectedOpt]="fsselected"
+    [headname]="'shipment'"
+    [localkey]="'shippreset'"
+    [resetisneed]="true">
+    <div class="exportopt">
+      <div title="Export" class="ml-10 boderfilter  p-6 pl-15 pr-15 radius5 bg-white filter-button" pointer
+           (click)="exportexcel()">
+        <img src="/assets/svg/export.svg" class="ht-16">
+      </div>
+    </div>
+  </app-filter-header>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+<div class="mt-100 color-fn-primary text-center "
+     *ngIf="!load && servererror"
+>
+  {{common?.servernotreposnehead}} <br/>
+  <div class="pt-10 reloadserver" pointer  (click)="getresponse()">{{common?.servernotreposne}}</div>
+</div>
+<app-norecord
+  *ngIf="norecordmsg"
+  [height]="211"
+  [customicon]="true"
+  [message]="'There is no shipments available'">
+  <div class="isicon">
+    <img class="ht-40" src="assets/svg/shipment.svg">
+  </div>
+</app-norecord>
+
