@@ -1,0 +1,100 @@
+
+<div class="fs-header fixed"
+     [ngClass]="{readonlyhead:fillwithother}"
+     flex #fixedauthheader>
+  <div>
+    <img src="assets/icons/FSL_LOGO.png" >
+  </div>
+  <div>
+    <nav #tabMenu md-tab-nav-bar style="height: 60px;border: none">
+      <a md-tab-link
+         style="color: white !important;
+                padding: 30px !important;
+                font-weight: 600;
+                min-width: inherit;"
+         *ngFor="let link of menuList"
+         #tab
+         [ngClass]="{'fullopc':isActive(link.state)}"
+         (click)="slidenav.close();getPosition(link,tab)"
+         [active]="isActive(link.state)">
+        {{link.name}}
+      </a>
+    </nav>
+  </div>
+  <div class="p-10 absolute r-0" flex>
+    <div class="color-fn-primary reloadserver b-700 f-16 pt-14 pr-15" pointer (click)="loaddsrreport()">
+      DSR
+    </div>
+    <button (click)="slidenav.open();"  md-icon-button class="ml-xs overflow-visible" style="margin-right: 22px !important;margin-top: 4px !important;">
+      <i title="notification" class="fa fa-bell-o fa-lg color-fn-white" style="font-size: 17px"  aria-hidden="true"></i>
+      <span  [@fade-speed] *ngIf="notires?.unreadcount > 0" class="notification-label">{{notires?.unreadcount}}</span>
+    </button>
+    <button #lgbutton  (click)="openlog()"  md-icon-button class="ml-xs lgoutbtn">
+      <img class="pro-img-auth"  src="assets/icons/person.png">
+    </button>
+    <div [@fade-in] *ngIf="slidenav.opened" class="headarrow r-82"></div>
+    <div [@fade-in] *ngIf="logoutsubmenu" class="headarrow r-20"></div>
+  </div>
+
+  <app-submenu-popup class="applgout"  [position]="{ top: '60px', right: 0}"
+                      [custom]="true"
+                      *ngIf="logoutsubmenu">
+    <div class="lh-25">
+      <div class="over pt-15 pl-10 nooutline" flex  [routerLink]="['/profile']">
+        <i class="flaticon-profile color-fn-rd"></i>
+        <div class="pl-10 f-14"> Profile </div>
+      </div>
+      <div class="over pl-10 pt-15 pb-10 nooutline" flex (click)="model.open()">
+        <i class="flaticon-power color-fn-rd"></i>
+        <div class="pl-10 f-14">Sign Out</div>
+      </div>
+    </div>
+  </app-submenu-popup>
+</div>
+<md-sidenav-container #navconatiner>
+  <div class="mt-170"  *ngIf="!alive">
+    <app-body-loader ></app-body-loader>
+  </div>
+  <div *ngIf="alive">
+    <div class="admin-layout"
+         [ngClass]="{'pb-30':(nopading !='quotation' && nopading !='invoice')}">
+      <router-outlet>
+      </router-outlet>
+    </div>
+    <div [ngClass]="{'pt-2':(nopading =='quotation' || nopading =='invoice')}">
+      <router-outlet name="fullscreen">
+      </router-outlet>
+    </div>
+  </div>
+
+
+  <md-sidenav style="position:fixed;" align="end" class="navsidebar" #slidenav
+              (close)="changereadcount()"
+              (open)="changeread()">
+   <app-notification [nvres]="notires?.notification" [navoption]="slidenav.opened" (nvclose)="slidenav.close()">
+   </app-notification>
+  </md-sidenav>
+</md-sidenav-container>
+
+
+
+
+
+<app-submenu-popup  [position]="tabPosition"
+                    [ListData]="childData"
+                    (onSelected)="routerNav($event.state,$event.child,$event.param)"
+                    *ngIf="isNeedSupMenu">
+</app-submenu-popup>
+
+
+<app-model-popup    #model
+                    [width]="'420px'"
+                    [header]="'LOGOUT'"
+                    [content]="'Do you want to logout ?'"
+                    [(modelpopup)]="popup"
+                    (done)="applogout()">
+</app-model-popup>
+
+<div>
+
+</div>
